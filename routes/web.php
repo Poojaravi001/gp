@@ -22,15 +22,13 @@ Route::get('/', function () {
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('preventCache');
 Auth::routes();
 
-// Home Route
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Admin Routes (with middleware)
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+#admin routes
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'],function(){
     Route::resource('branch', 'App\Http\Controllers\BranchController');
-    
-    // Route to directly display studentdashboard view
     Route::get('studentdashboard', function () {
-        return view('dashboards.studentdashboard');
-    })->name('studentdashboard');
+    return view('dashboards.studentdashboard');
+})->name('studentdashboard');
 });
