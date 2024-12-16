@@ -17,12 +17,14 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the student dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
-    }
+{
+    return view('dashboards.studentdashboard')->with('home', view('home'));
 }
+
+}
+
