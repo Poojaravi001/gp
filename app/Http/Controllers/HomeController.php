@@ -22,8 +22,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-{
-    return view('dashboards.studentdashboard')->with('home', view('home'));
+    {
+    return view('home');
+    }
+
+function studentdashboard(){
+    return view('dashboards.studentdashboard');
 }
 
 }
