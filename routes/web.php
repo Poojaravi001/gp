@@ -23,6 +23,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->mid
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+#admin routes
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'],function(){
     Route::resource('branch', 'App\Http\Controllers\BranchController');
 });
